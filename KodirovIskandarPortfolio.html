@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner's Game Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Studio Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+        section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .about, .skills, .projects, .contact, .testimonials {
+            margin-bottom: 50px;
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        body.dark-mode h2 {
+            color: #f5f5f5;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .skills ul, .projects ul, .testimonials ul {
+            list-style: none;
+            padding: 0;
+        }
+        .skills ul li, .projects ul li, .testimonials ul li {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .skills ul li, body.dark-mode .projects ul li, body.dark-mode .testimonials ul li {
+            background: #444;
+            color: #f5f5f5;
+        }
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-bar div {
+            height: 20px;
+            background-color: #333;
+            text-align: right;
+            padding-right: 10px;
+            line-height: 20px;
+            color: white;
+            border-radius: 5px;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact form input, .contact form textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contact form button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .projects ul {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .projects ul::-webkit-scrollbar {
+            display: none;
+        }
+        .projects ul li {
+            flex: 0 0 auto;
+            margin-right: 20px;
+            width: 300px;
+        }
+        .project-video {
+            width: 100%;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: #333;
+            font-size: 2em;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        body.dark-mode .social-icons a {
+            color: #f5f5f5;
+        }
+        /* Smooth scrolling for internal links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Lightbox CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            padding: 10px;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .lightbox-content video {
+            width: 100%;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Owner's Game Developer Portfolio</h1>
+        <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Work and Projects</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="about" class="about" data-aos="fade-up">
+        <h2>About Me</h2>
+        <p>Hello! I am Owner, a dedicated game programmer specializing in gameplay mechanics using C++ in Unreal Engine. My passion is creating immersive and engaging gameplay experiences. I have a strong background in game development, with a focus on performance optimization and innovative game mechanics.</p>
+    </section>
+    <section id="skills" class="skills" data-aos="fade-up">
+        <h2>Skills</h2>
+        <ul>
+            <li>
+                <p>C++ Programming</p>
+                <div class="progress-bar">
+                    <div style="width: 90%;">90%</div>
+                </div>
+            </li>
+            <li>
+                <p>Unreal Engine</p>
+                <div class="progress-bar">
+                    <div style="width: 85%;">85%</div>
+                </div>
+            </li>
+            <li>
+                <p>Gameplay Mechanics</p>
+                <div class="progress-bar">
+                    <div style="width: 80%;">80%</div>
+                </div>
+            </li>
+            <li>
+                <p>Performance Optimization</p>
+                <div class="progress-bar">
+                    <div style="width: 75%;">75%</div>
+                </div>
+            </li>
+            <li>
+                <p>AI Development</p>
+                <div class="progress-bar">
+                    <div style="width: 70%;">70%</div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section id="projects" class="projects" data-aos="fade-up">
+        <h2>Work and Projects</h2>
+        <div>
+            <button onclick="scrollProjects('left')">◀</button>
+            <ul>
+                <li>
+                    <video class="project-video" onclick="openLightbox('example_project_1.mp4')" controls>
+                        <source src="example_project_1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p><strong>Project Title 1</strong><br>Description of the project, the technologies used, and your role in it.</p>
+                </li>
+                <li>
+                    <video class="project-video" onclick="openLightbox('example_project_2.mp4')" controls>
+                        <source src="example_project_2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p><strong>Project Title 2</strong><br>Description of the project, the technologies used, and your role in it.</p>
+                </li>
+                <!-- Add more projects as needed -->
+            </ul>
+            <button onclick="scrollProjects('right')">▶</button>
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <ul>
+            <li>
+                <p>"Owner is an exceptional game developer who excels in creating engaging gameplay mechanics. Highly recommend!" - Colleague</p>
+            </li>
+            <li>
+                <p>"Owner's expertise in C++ and Unreal Engine is top-notch. They are a valuable asset to any game development team." - Client</p>
+            </li>
+        </ul>
+    </section>
+    <section id="contact" class="contact" data-aos="fade-up">
+        <h2>Contact</h2>
+        <form action="mailto:your-email@example.com" method="post" enctype="text/plain" onsubmit="return validateForm()">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <div class="social-icons">
+        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <video id="lightbox-video" controls></video>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        function scrollProjects(direction) {
+            const container = document.querySelector('.projects ul');
+            const scrollAmount = 400; // Adjust as needed
+            if (direction === 'left') {
+                container.scrollBy(-scrollAmount, 0);
+            } else if (direction === 'right') {
+                container.scrollBy(scrollAmount, 0);
+            }
+        }
+
+        function validateForm() {
+            const name = document.forms[0].name.value;
+            const email = document.forms[0].email.value;
+            const message = document.forms[0].message.value;
+            if (!name || !email || !message) {
+                alert("All fields must be filled out");
+                return false;
+            }
+            return true;
+        }
+
+        function openLightbox(videoSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            lightbox.style.display = 'block';
+            lightboxVideo.src = videoSrc;
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            lightbox.style.display = 'none';
+            lightboxVideo.src = '';
+        }
+    </script>
+</body>
+</html>
